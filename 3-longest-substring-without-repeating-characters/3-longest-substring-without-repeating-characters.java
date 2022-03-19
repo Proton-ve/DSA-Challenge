@@ -3,10 +3,8 @@ class Solution {
         
         HashMap<Character,Integer> subs = new HashMap<Character,Integer>();
         
-        int ans=0, n=s.length();
-        
-        int i=0;
-        
+        int ans=0, i=0, n=s.length();
+                
         while(i<n){
             
             char cur = s.charAt(i);
@@ -15,10 +13,8 @@ class Solution {
                 subs.put(cur,i);
                 i++;
             }else{
-                int size = subs.size();
-                if(size>ans)ans = size;
-                int index = subs.get(cur);
-                i = index + 1;
+                ans = Math.max(ans,subs.size());
+                i = subs.get(cur) + 1;
                 subs.clear();
             }
             
