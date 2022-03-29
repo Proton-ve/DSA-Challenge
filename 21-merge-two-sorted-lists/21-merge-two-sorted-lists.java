@@ -11,25 +11,28 @@
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
      
+        // Make a new result ListNode on which we will make changes
         ListNode temp = new ListNode();
+        
+        // Take reference to head node of result list 
         ListNode ans = temp;
         
         while(list1!=null && list2!=null){
             
+            // choose smaller element from both list and insert into result list
             if(list1.val<list2.val){
                 temp.next = new ListNode(list1.val);
-                if(list1.next!=null)list1 = list1.next;
-                else list1 = null;
+                list1 = list1.next!=null ? list1.next:null;
                 temp = temp.next;
             }else{
                 temp.next = new ListNode(list2.val);
-                if(list2.next!=null)list2 = list2.next;
-                else list2 = null;
+                list2  = list2.next!=null ? list2.next:null;
                 temp = temp.next;
             }
             
         }
         
+        // Check if any list is left to merge
         if(list1!=null){
             
             while(list1!=null){
@@ -48,6 +51,7 @@ class Solution {
             }
         }
      
+        // return reference node we made earlier
         return ans.next;
     }
 }
