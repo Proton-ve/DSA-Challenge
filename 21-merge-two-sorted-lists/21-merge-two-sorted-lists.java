@@ -33,23 +33,8 @@ class Solution {
         }
         
         // Check if any list is left to merge
-        if(list1!=null){
-            
-            while(list1!=null){
-                temp.next = new ListNode(list1.val);
-                list1 = list1.next;
-                temp = temp.next;
-            }
-        }
-        
-        if(list2!=null){
-            
-            while(list2!=null){
-                temp.next = new ListNode(list2.val);
-                list2 = list2.next;
-                temp = temp.next;
-            }
-        }
+        temp.next = list1==null ? list2:list1;
+
      
         // return reference node we made earlier
         return ans.next;
