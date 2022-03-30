@@ -13,16 +13,12 @@ class Solution {
     public void combinations(int[]num, int i, int target, List<Integer> out, List<List<Integer>> result){
         
         
-        
-        if(i==num.length){
-            
-            if(target==0){
-                List<Integer> temp = new ArrayList(out);
-                result.add(temp);
-                return;
-            }
-            
-           return;
+        if(i==num.length)return;            
+                  
+        if(target==0){
+            List<Integer> temp = new ArrayList(out);
+            result.add(temp);
+            return;
         }
         
         if(target<0)return;
@@ -35,9 +31,8 @@ class Solution {
             out.remove(out.size()-1);
         }
         
-        
-        
-        
     }
+    
+    
     
 }
