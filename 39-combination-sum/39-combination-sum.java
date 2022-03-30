@@ -31,8 +31,7 @@ class Solution {
         
         if(target>0){
             out.add(num[i]);
-            target=target-num[i];
-            combinations(num, i, target, out, result);
+            combinations(num, i, target-num[i], out, result);
             out.remove(out.size()-1);
         }
         
