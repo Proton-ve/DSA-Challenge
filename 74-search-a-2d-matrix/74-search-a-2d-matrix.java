@@ -6,18 +6,15 @@ class Solution {
                 
         while(start<matrix.length && end >= 0){
             
-        if(target==matrix[start][end])
-            return true;
-        else
-            if(target < matrix[start][end]){
-            end--;
-        }else
-            if(target > matrix[start][end]){
-            start++;
+            if(target==matrix[start][end])
+                return true;
+            else
+                if(target < matrix[start][end]){
+                end--;
+            }else
+                start++;
+                
             }
-            
-            System.out.println(start+"  "+end);
-        }
         
         return false;
     }
