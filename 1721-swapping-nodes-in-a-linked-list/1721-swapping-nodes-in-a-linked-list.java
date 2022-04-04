@@ -13,50 +13,26 @@ class Solution {
      
         if(head==null || head.next==null)return head;
         
-        int length = 0;
-        ListNode temp = head;
+        ListNode leftNode = head;
         
+        while(k>1){
+            
+            leftNode = leftNode.next;
+            k--;
+            
+        }
         
-        while(temp!=null){
+        ListNode rightNode = head;
+        ListNode temp = leftNode;
+        
+        while(temp.next!=null){
             temp=temp.next;
-            length++;
+            rightNode=rightNode.next;
         }
         
-        ListNode dummy = head;
-        ListNode leftNode = head, rightNode = head;
-        
-        int left = k, right = length-k+1;
-        int lvalue=0, rvalue=0;
-        
-        while(dummy!=null){
-            
-            left--;
-            right--;
-            
-            
-            
-            if(left<=0){
-                
-                lvalue = leftNode.val;
-            }else{
-                leftNode = leftNode.next;
-            }
-            
-            if(right<=0){
-                
-                rvalue = rightNode.val;
-            }else{
-                rightNode = rightNode.next;
-            }
-            
-            dummy = dummy.next;
-            
-        }
-        
-        // System.out.println(rvalue+" "+lvalue);
-        
-        leftNode.val = rvalue;
-        rightNode.val = lvalue;
+        int temp2 = leftNode.val;
+        leftNode.val = rightNode.val;
+        rightNode.val = temp2;
         
         return head;
     }
