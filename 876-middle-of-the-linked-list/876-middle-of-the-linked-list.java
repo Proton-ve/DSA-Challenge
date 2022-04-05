@@ -13,16 +13,10 @@ class Solution {
         
         ListNode fast = head, slow = head;
         
-        while(fast!=null){
+        while(fast!=null && fast.next!=null){
             
-            try{
-                fast = fast.next.next;
-                
-            }catch(NullPointerException e){
-                break;
-            }
+            fast = fast.next.next;       
             slow = slow.next;
-            
         }
      
         return slow;
