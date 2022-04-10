@@ -29,7 +29,6 @@ class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         
         if(k==1) return head;
-        //k = k-1;
         int t = k-1;
         ListNode temp = head;
         ListNode dummy = head;
@@ -44,29 +43,14 @@ class Solution {
         ListNode temp2 = head;
         
         while(check(temp2,k)){
-            // System.out.print("temp2 is ");
-            // display(temp2);
-           // if(check(temp2,k)){
-                
-                temp2 = reverseBetween(dummy,left,right, k);
-                dummy = temp;
-               //  System.out.print("op is ");
-               // display(temp);
-          //  }else{
-            //     System.out.print("dsq");
-            //     break;
-            // }
-        
-        
-            
+ 
+            temp2 = reverseBetween(dummy,left,right, k);
+            dummy = temp;
             left = left+k;
             right = right+k;
             
         }
                 
-        
-        
-           
         return temp;
         
     }
@@ -74,10 +58,7 @@ class Solution {
     
     
     public ListNode reverseBetween(ListNode head, int left, int right, int k) {
-        
-        System.out.println("left is "+left +"right is "+right);
-        
-      //  display(head);
+
         
         if(head==null || head.next==null || left==right)return head;
         
@@ -119,17 +100,5 @@ class Solution {
         return cut2.next;
     }
     
-    
-    public void display(ListNode head){
-        
-        while(head!=null){
-            System.out.print(head.val+"->");
-            head = head.next;
-        }
-        
-        System.out.println();
-        
-    } 
-    
-    
+
 }
