@@ -25,6 +25,7 @@ class Solution {
                 start = mid+1; 
             }else{
                 end--;
+                start++;
             }
             
         }
@@ -33,22 +34,7 @@ class Solution {
         
     }
     
-    
-//     public int getIndex(int[] arr, int mid, int limit, boolean flag){
         
-//         int temp = mid;
-        
-//         if(flag){
-//             while(mid>limit && arr[mid]==temp)mid--;
-            
-//         }else{
-//             while(mid<limit && arr[mid]==temp)mid++;
-            
-//         }
-        
-//         return mid;
-//     }
-    
     
     
 }
