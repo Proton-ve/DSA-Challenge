@@ -9,16 +9,16 @@ class Solution {
         for(int i=n;i>=0;i--){
 
             while(!stack.isEmpty() && stack.peek()<arr[i]) stack.pop();
-
-            int ans = stack.isEmpty() ? -1:stack.peek();
             
-            nextGreaterEle.put(arr[i],ans);
+            nextGreaterEle.put(arr[i],(stack.isEmpty() ? -1:stack.peek()));
             
             stack.push(arr[i]);
 
         }
         
-        for(int i=0; i<nums1.length; i++){
+        int n1 = nums1.length;
+        
+        for(int i=0; i<n1; i++){
             
             nums1[i] = nextGreaterEle.get(nums1[i]);
             
