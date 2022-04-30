@@ -3,20 +3,19 @@ class Solution {
         
         int[] prevSmallers = previousSmaller(heights);
         int[] nextSmallers = nextSmaller(heights);
-        
-        ArrayList<Integer> areas = new ArrayList();
-        
+                
         int n = heights.length;
+        int maxArea = 0;
         
         for(int i=0;i<n;i++){
             
-            int currArea = (nextSmallers[i] - prevSmallers[i])-1;
+            int currArea = (nextSmallers[i] - prevSmallers[i]-1)*heights[i];
             
-            areas.add(currArea*heights[i]);
-                        
+            if(currArea>maxArea)maxArea = currArea;
+                    
         }
                 
-        return Collections.max(areas);
+        return maxArea;
     }
     
     
