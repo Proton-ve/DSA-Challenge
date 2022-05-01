@@ -18,12 +18,12 @@ class Solution {
             
         }
         
-        int n2 = t.length();
-        int j=0;
+        n1 = t.length();
+        i=0;
         
-        while(j<n2){
+        while(i<n1){
             
-            char c = t.charAt(j++);
+            char c = t.charAt(i++);
             
             if(c!='#')s2.push(c);
             else{
@@ -39,10 +39,7 @@ class Solution {
             
         }
         
-        if(s1.isEmpty() && s2.isEmpty())return true;
-        else return false;
-        
-        
-        
+        return s1.isEmpty() && s2.isEmpty();
+       
     }
 }
