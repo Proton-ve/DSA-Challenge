@@ -1,4 +1,42 @@
 class Solution {
+    
+    //O(NlogN)
+    public int maxOperations(int[] nums, int k) {
+        
+        Arrays.sort(nums);
+        int count=0;
+        int start = 0, end = nums.length-1;
+        
+        while(start<end){
+                        
+            int sum = nums[start]+nums[end];
+            
+            if(sum==k){
+                start++;
+                end--;
+                count++;
+            }else
+                if(sum<k)
+                    start++;
+                else 
+                    end--;
+            
+            
+        }
+        
+       return count; 
+    }
+    
+    
+    
+    
+    
+    
+    
+    /*
+    
+    O(n^2)
+    
     public int maxOperations(int[] nums, int k) {
         
         int count = 0, n  = nums.length;
@@ -38,5 +76,8 @@ class Solution {
         return -1;    
     } 
     
+    
+    
+    */ 
     
 }
