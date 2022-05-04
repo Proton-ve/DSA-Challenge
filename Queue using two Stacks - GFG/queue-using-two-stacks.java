@@ -58,9 +58,33 @@ class StackQueue
     {
 	   // Your code here
 	   
-	   s1.push(x);
+	   if(s1.isEmpty())s1.push(x);
+	   else{
+	       
+	       while(!s1.isEmpty()){
+	           s2.push(s1.pop());
+	       }
+	       
+	       s1.push(x);
+	       
+	       
+	       
+	   }
+	   
+	   while(!s2.isEmpty()){
+	       
+	       s1.push(s2.pop());
+	       
+	   }
 	   
 	   
+	   //while(!s2.isEmpty()){
+	       
+	   //    s1.push(s2.pop());
+	       
+	       
+	   //}
+
     }
 	
     
@@ -69,25 +93,28 @@ class StackQueue
     {
 	   // Your code here
 	   
-	   if(s1.isEmpty())return -1;
 	   
-	   while(!s1.isEmpty()){
-	       
-	       s2.push(s1.pop());
-	       
-	       
-	   }
+	   return s1.isEmpty()?-1:s1.pop();
 	   
-	   int ans = s2.pop();
+	   //if(s1.isEmpty())return -1;
 	   
-	   while(!s2.isEmpty()){
+	   //while(!s1.isEmpty()){
 	       
-	       s1.push(s2.pop());
+	   //    s2.push(s1.pop());
 	       
 	       
-	   }
+	   //}
+	   
+	   //int ans = s2.pop();
+	   
+	   //while(!s2.isEmpty()){
+	       
+	   //    s1.push(s2.pop());
+	       
+	       
+	   //}
 	   
 	   
-	   return ans;
+	   //return ans;
     }
 }
