@@ -1,6 +1,42 @@
 class Solution {
+    public int maxOperations(int[] nums, int k) {
+        
+        int count = 0, n = nums.length;
+        
+        Map<Integer,Integer> map = new HashMap(n);
+                
+        for(int i=0; i<n; i++){
+            
+            int remain = k - nums[i];
+            
+            if(map.getOrDefault(remain,-1)>0){
+                
+                count++;
+                map.put(remain,map.get(remain)-1);
+                
+                
+            }else{
+                
+                map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+                
+                
+            }
+            
+        }
+        
+        return count;
+    }
+}
+
+
+
+ 
     
-    //O(NlogN)
+    /*
+    
+    
+    ***********O(NlogN)****************
+    
     public int maxOperations(int[] nums, int k) {
         
         Arrays.sort(nums);
@@ -29,13 +65,7 @@ class Solution {
     
     
     
-    
-    
-    
-    
-    /*
-    
-    O(n^2)
+    **************O(n^2)*************
     
     public int maxOperations(int[] nums, int k) {
         
@@ -80,4 +110,3 @@ class Solution {
     
     */ 
     
-}
