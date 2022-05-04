@@ -1,5 +1,5 @@
 # Queue using two Stacks
-##  Easy 
+## Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Implement a Queue using 2 stacks<strong> s1</strong> and<strong> s2</strong> .<br>
 A Query <strong>Q</strong> is of 2 Types<br>
