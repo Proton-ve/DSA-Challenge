@@ -19,8 +19,6 @@ class Solution {
     public static void subset(int k, int i, int n, List<Integer> out, int sum, ArrayList<List<Integer>> ans){
 
         
-        // System.out.println(sum+" i si "+i+" out ele are"+out);
-
         if(i==n-1 || out.size()==k){
             
 
@@ -29,9 +27,7 @@ class Solution {
                 ans.add(temp);
                 return ;
             }
-            
-            // if(out.size()>0)out.remove(out.size()-1);
-            
+                        
             return ;
         }
 
@@ -44,13 +40,10 @@ class Solution {
             out.add(nums[i]);            
             subset(k, i+1, n, out, sum-nums[i], ans);
             out.remove(out.size()-1);
-            // output.addAll(subset(k, i+1, n, out, sum-nums[i]));
             
         }
-            
-      // output.addAll(subset(k,i+1, n, out, sum));
-        
-subset(k,i+1, n, out, sum, ans);
+                    
+        subset(k,i+1, n, out, sum, ans);
         return ;
     }
 }
