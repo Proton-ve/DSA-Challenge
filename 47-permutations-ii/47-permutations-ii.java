@@ -22,10 +22,8 @@ class Solution {
         for(int j=0; j<=out.size(); j++){
 
             out.add(j,nums[i]);
-            i++;
-            permutaions(nums, out, i, result);
+            permutaions(nums, out, i+1, result);
             out.remove(j);
-            i--;
         }
         
      return;   
