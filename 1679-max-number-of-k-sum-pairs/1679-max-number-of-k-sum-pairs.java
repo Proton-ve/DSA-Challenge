@@ -13,13 +13,9 @@ class Solution {
                 
                 count++;
                 map.put(remain,map.get(remain)-1);
-                
-                
+                         
             }else{
-                
                 map.put(nums[i],map.getOrDefault(nums[i],0)+1);
-                
-                
             }
             
         }
