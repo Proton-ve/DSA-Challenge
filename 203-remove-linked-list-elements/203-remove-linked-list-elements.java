@@ -30,7 +30,7 @@ class Solution {
              
         }
         
-        return prev!=null?dummy:null;
+        return dummy;
                 
     }
 }
