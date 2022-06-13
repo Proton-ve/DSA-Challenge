@@ -13,37 +13,30 @@ class Solution {
         
         if(head==null || head.next==null || k==0)return head;
         
-        ListNode temp1 = head;
-        ListNode temp2 = head;
-        int len=1;
+        ListNode first = head;
+        int len = 1;
+        
         
         while(head.next!=null){
             head=head.next;
             len++;
-        }
+        }        
         
-        int cut = len-k%len;
+        head.next = first;
         
-        if(cut==len)return temp1;
+        int cut = len-k%len;    
         
-        //System.out.println("cut is"+cut);
+        System.out.println("cut val is "+cut);
         
         while(cut>1){
-          
-            temp1=temp1.next;
+            first = first.next;
             cut--;
-            
         }
         
-        ListNode cut1 = temp1.next;
-        ListNode ans = cut1;
-        temp1.next = null;
+        System.out.println("cut is "+first.val);
         
-        while(cut1.next!=null){
-            cut1=cut1.next;
-        }
-        
-        cut1.next = temp2;
+        ListNode ans = first.next;
+        first.next = null;
         
         return ans;
     }
