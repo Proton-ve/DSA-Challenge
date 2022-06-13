@@ -16,25 +16,19 @@ class Solution {
         ListNode first = head;
         int len = 1;
         
-        
         while(head.next!=null){
             head=head.next;
             len++;
         }        
         
         head.next = first;
-        
         int cut = len-k%len;    
-        
-        System.out.println("cut val is "+cut);
-        
+                
         while(cut>1){
             first = first.next;
             cut--;
         }
-        
-        System.out.println("cut is "+first.val);
-        
+                
         ListNode ans = first.next;
         first.next = null;
         
