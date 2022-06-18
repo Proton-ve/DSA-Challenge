@@ -14,20 +14,55 @@
  * }
  */
 class Solution {
+    
+    
     public List<Integer> postorderTraversal(TreeNode root) {
+    
+        if(root==null)return new ArrayList<Integer>();
         
-        ArrayList<Integer> ans = new ArrayList();
+        List<Integer> ans = new ArrayList();
+        Stack<TreeNode> stack1 = new Stack();
+        Stack<TreeNode> stack2 = new Stack();
+        stack1.push(root);
         
-        if(root==null){
-            return new ArrayList();
+        while(!stack1.isEmpty()){
+            
+            TreeNode temp = stack1.pop();
+            stack2.push(temp);
+            if(temp.left!=null)stack1.push(temp.left);
+            if(temp.right!=null)stack1.push(temp.right);
             
         }
         
-        ans.addAll(postorderTraversal(root.left));
-        ans.addAll(postorderTraversal(root.right));
-        ans.add(root.val);
-        
+        while(!stack2.isEmpty()){
+            ans.add(stack2.pop().val);
+        }
+    
         return ans;
-        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    // recursive
+//     public List<Integer> postorderTraversal(TreeNode root) {
+        
+//         ArrayList<Integer> ans = new ArrayList();
+        
+//         if(root==null){
+//             return new ArrayList();
+            
+//         }
+        
+//         ans.addAll(postorderTraversal(root.left));
+//         ans.addAll(postorderTraversal(root.right));
+//         ans.add(root.val);
+        
+//         return ans;
+        
+//     }
 }
