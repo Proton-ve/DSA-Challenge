@@ -5,8 +5,7 @@ class Solution {
         
         for(int i=0;i<spells.length;i++){
             
-            long key = (success%spells[i]==0)?success/spells[i]:1+success/spells[i];
-            int ans =  search(potions,spells[i],key);
+            int ans =  search(potions,spells[i],success);
             spells[i] = ans;
         }
         
@@ -16,20 +15,20 @@ class Solution {
     public int search(int[] arr, int spell, long target){
         
         int start = 0, end = arr.length-1;
-        int mid = 0, ans = end+1;
+        int mid = 0;
         
         while(start<=end){
             
             mid = start+(end-start)/2;
+            long product = (long)arr[mid]*(long)spell;
 
-            if(arr[mid]>=target){
+            if(product>=target){
                 end = mid-1;
-                ans = mid;
             }else{
                 start = mid+1;
             }
         }
-        return arr.length - ans;
+        return arr.length - end -1;
     }
     
 }
