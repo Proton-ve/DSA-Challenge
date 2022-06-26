@@ -69,27 +69,16 @@ class Solution {
         }
 
         List<List<Integer>> list = new ArrayList();
-        
-//                     System.out.println("map vals are");
-
-//                     System.out.println(map.values());
-
-//         System.out.println("q vals are");
 
         for(TreeMap<Integer,PriorityQueue<Integer>> e : map.values()){
             
-            // List<Integer> level = new ArrayList();
             list.add(new ArrayList());
-            
-            // System.out.println(e.values());
-            
+                        
             for(PriorityQueue<Integer> f : e.values()){
                 
                 while(!f.isEmpty()){
                     list.get(list.size()-1).add(f.poll());
-                    // level.add(f.poll());
                 }
-                // list.add(level);
             }
             
         }
