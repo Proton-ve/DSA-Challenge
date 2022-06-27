@@ -41,7 +41,7 @@ class Solution {
             
             int size = q.size();
             
-            for(int i=0;i<size;i++){
+            // for(int i=0;i<size;i++){
                 
                 Tuple temp = q.poll();
                 int row = temp.row, col = temp.col;
@@ -65,7 +65,7 @@ class Solution {
                 if(node.right!=null){
                     q.offer(new Tuple(node.right.val,row+1, col+1, node.right));
                 }
-            }
+            // }
         }
 
         List<List<Integer>> list = new ArrayList();
