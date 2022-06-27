@@ -19,7 +19,7 @@ class Solution {
         if(root==null)return 0;
         
         Queue<TreeNode> q = new ArrayDeque();
-        TreeNode end = new TreeNode(101);
+        TreeNode end = new TreeNode(101);  // used to know end of level
         q.add(root);
         q.add(end);
         int height = 0;
