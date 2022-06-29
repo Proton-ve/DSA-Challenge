@@ -19,26 +19,32 @@ class Solution {
     
     public List<String> binaryTreePaths(TreeNode root) {
         
-        return path(root,"");
+        StringBuilder sb = new StringBuilder("");
+        
+        return path(root,sb);
     }
     
-    public List<String> path(TreeNode node, String path){
+    public List<String> path(TreeNode node, StringBuilder path){
+
+        ArrayList<String> ans = new ArrayList();
         
-        if(node==null)return new ArrayList();
+        path.append(node.val);
         
         if(node.left==null && node.right==null){
-            path = path+node.val;
             ArrayList<String> out = new ArrayList();
-            out.add(path);
-            path = "";
+            out.add(path.toString());
             return out;
         }
         
-        ArrayList<String> ans = new ArrayList();
-        path = path+node.val+j;
+        path.append("->");
         
-        ans.addAll(path(node.left, path));
-        ans.addAll(path(node.right, path));
+        int len = path.length();
+        // System.out.println("path formed for node "+node.val+" len === "+len);
+        
+        if(node.left!=null)ans.addAll(path(node.left, path));
+        path.setLength(len);
+        if(node.right!=null)ans.addAll(path(node.right, path));
+        path.setLength(len);
         
         return ans;
     }
