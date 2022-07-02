@@ -49,9 +49,8 @@ class Solution{
             else
                 if((j-i+1)==k){
                     ans = Math.max(sum,ans);
-                    sum-=Arr.get(i);
+                    sum-=Arr.get(i++);
                     j++;
-                    i++;
                 }
         }
         
