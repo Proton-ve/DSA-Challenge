@@ -18,7 +18,6 @@ class Solution {
             char slow = txt.charAt(i);
             
             if(map.containsKey(fast)){
-                
                 map.put(fast,map.get(fast)-1);
                 if(map.get(fast)==0)count--;
             }
@@ -41,8 +40,6 @@ class Solution {
         }
      
      return list;   
-        
-        
         
     }
 }
