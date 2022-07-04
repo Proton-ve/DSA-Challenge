@@ -13,16 +13,14 @@ class Solution {
             
             queue.offer(nums[j]);
             
-            if(j-i+1<k)j++;
-            else{
-                
+            if(j-i+1==k){
                 int max = queue.peek();
                 ans[i] = max;
                 if(nums[i]==max)queue.poll();
                 i++;
-                j++;
             }
             
+            j++;
         }
         
         return ans;
