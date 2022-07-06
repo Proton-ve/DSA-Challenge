@@ -42,12 +42,11 @@ class Solution {
                     char slow = s.charAt(i);
                     map.put(slow, map.get(slow)-1);
                     if(map.get(slow)==0){
-                        map.remove(slow);
+                        // map.remove(slow);
                         uniques--;
                     }
                     i++;
                 }
-                // j++;
             }
             
             if(uniques==k){
