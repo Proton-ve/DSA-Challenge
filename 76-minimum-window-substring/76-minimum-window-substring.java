@@ -33,7 +33,7 @@ class Solution {
                     if(map.containsKey(start)){
                         // if(map.get(start)<0){
                             map.put(start,map.get(start)+1);
-                            if(map.get(start)>0)count++;
+                            if(map.get(start)>0)count++; // I got stuck here
                         // }
                     }
                     i++;
