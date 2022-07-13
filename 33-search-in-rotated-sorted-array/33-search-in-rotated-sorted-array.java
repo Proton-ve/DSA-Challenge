@@ -1,36 +1,31 @@
 class Solution {
-    public int search(int[] nums, int target) {
+    public int search(int[] nums, int t) {
         
+        int s=0,e = nums.length-1;
         
-        int start = 0, end = nums.length-1;
-        int mid = 0;
-        
-        while(start<=end){
+        while(s<=e){
             
-            mid = start + (end-start)/2;
+            int m = s + (e-s)/2;
             
-            if(target==nums[mid])return mid;
+            int midE = nums[m];
             
+            if(midE==t)return m;
             
-            // if left part of mid is unsorted
-            if(nums[start]>nums[mid]){
-                                
-                // if(target>=nums[start] && target<nums[mid])end = mid-1;     
-                // else
-                if(target>nums[mid] && target<=nums[end])start = mid+1;
+            if(midE<nums[s]){
+                if(t>midE && t<=nums[e])
+                    s=m+1;
                 else
-                end = mid-1;        // if target lies in unsorted part, i.e, arr = [11,13,15,22,23,1,4,8], mid = 22, target = 4
-                
-            }else{      // if right part is unsorted or both parts are sorted
-                
-                if(target>=nums[start] && target<nums[mid])end = mid-1;
+                    e=m-1;
+            }else{
+                if(t<midE && t>=nums[s])
+                    e=m-1;
                 else
-                start = mid+1;   // if target lies in unsorted part
+                    s=m+1;
             }
+            
             
         }
         
         return -1;
-        
     }
 }
