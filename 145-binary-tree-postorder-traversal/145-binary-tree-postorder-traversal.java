@@ -20,27 +20,33 @@ class Solution {
         List<Integer> ans = new ArrayList();
         TreeNode cur = root;
         
-        while(cur!=null || !stack.isEmpty()){
+        while(!stack.isEmpty() || cur!=null){
+                        
+            
             
             if(cur!=null){
                 stack.push(cur);
                 cur = cur.left;
             }else{
-                TreeNode temp = stack.peek().right;
+                            
+               TreeNode temp = stack.peek().right;
+                
                 if(temp==null){
                     
                     temp = stack.pop();
-                    ans.add(temp.val);
+                    ans.add(temp.val);     
                     
-                    while(!stack.isEmpty() && temp==stack.peek().right){
-                        temp = stack.pop();
-                        ans.add(temp.val);
-                    }
-                }else
-                    cur = temp;
-            }
+                        while(!stack.isEmpty() && stack.peek().right==temp){
+                            temp = stack.pop();
+                            ans.add(temp.val);                        
+                        }
+                    
+                }
+                else cur = temp;
+                
+            } 
         }
         
-        return ans;
+       return ans; 
     }
 }
