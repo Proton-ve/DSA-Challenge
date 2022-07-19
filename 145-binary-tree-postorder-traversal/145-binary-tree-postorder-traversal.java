@@ -28,12 +28,15 @@ class Solution {
                 stack.push(cur);
                 cur = cur.left;
             }else{
+                
+                // left is null, thus check if node has right or not
                             
                TreeNode temp = stack.peek().right;
                 
+                //if right is null,means we both child are null
                 if(temp==null){
                     
-                    temp = stack.pop();
+                    temp = stack.pop();         //  temp is null, so make stack top(cur element whose lft n right are null) as temp
                     ans.add(temp.val);     
                     
                         while(!stack.isEmpty() && stack.peek().right==temp){
@@ -42,7 +45,7 @@ class Solution {
                         }
                     
                 }
-                else cur = temp;
+                else cur = temp;        //if right is not null, proceed with this node as cur and carry process
                 
             } 
         }
