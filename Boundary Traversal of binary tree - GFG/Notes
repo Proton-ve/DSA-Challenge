@@ -1,0 +1,74 @@
+class Solution
+{
+      private static ArrayList<Integer> list;
+    
+	ArrayList <Integer> boundary(Node node)
+	{
+
+        list = new ArrayList<Integer>();
+        if(node.left!=null || node.right!=null)list.add(node.data);
+	    Node cur = node.left;
+	    
+	   // STEP 1
+	    //To add all leftmost nodes in list
+	    while(cur!=null){
+	        
+	        // if left is not null, means it(current node) is not leaf node, then add it to list
+	        if(cur.left!=null){         
+	            list.add(cur.data);
+	            cur = cur.left;
+	        }else{                     
+	            // if left is null, then check if it has right node or not
+	            // if right node is not null, means current node is not leaf, then add it to list
+	            if(cur.right!=null)list.add(cur.data);
+	            
+	           //even if right node is null, means it is leaf node, so we wil not add it to list(as we are adding only leftest node in this while loop)
+	           // and thus right node is null, means both childs are null, so we have reached end of node, and we have addded all leftest node to list,
+	           // So, now break out of loop, by making cur node as right node, which is null, eventualy we will exit while loop as per condition
+	            cur = cur.right;
+	        }
+	    }
+	    
+	    
+	   // STEP 2
+	   // now, add all leaf node to list by preorder
+	    preorder(node);
+	    
+	   // STEP 3
+	   // and now repeat step 1 for rightest nodes
+	    cur = node.right;
+	    // take size of list, as we have to add elements in list from this index
+	    int ind = list.size();
+	    while(cur!=null){
+	        
+	        if(cur.right!=null){
+	            list.add(ind,cur.data);
+	            cur = cur.right;
+	        }else{
+	            if(cur.left!=null)
+	                list.add(ind,cur.data);
+	                
+	            cur = cur.left;
+	        }
+	    }
+	    
+	    return list;
+	}
+	
+	void preorder(Node node){
+	    
+	    Node root = node;
+
+	    if(root.left==null && root.right==null){
+	        int a = root.data;
+	        list.add(a);
+	        return;
+	    }
+	    
+	    if(root.left != null)preorder(root.left);
+	    if(root.right != null)preorder(root.right);
+	    
+	    return;
+	}
+	
+}
