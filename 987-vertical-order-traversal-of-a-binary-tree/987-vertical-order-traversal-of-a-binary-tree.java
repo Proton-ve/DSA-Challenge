@@ -14,7 +14,6 @@
  * }
  */
 class Solution {
-    
     class Tuple{
         
         int val, col, row;
@@ -86,3 +85,62 @@ class Solution {
         return list;
     }
 }
+
+
+/**
+class Tuple{
+        
+        int row, col;
+        TreeNode node;
+        
+        Tuple(int row, int col, TreeNode node){
+            this.row = row;
+            this.col = col;
+            this.node = node;
+        }
+    }
+    
+    
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        
+        Queue<Tuple> queue = new ArrayDeque();
+        queue.offer(new Tuple(0,0,root));
+//               Col      Nodes in this row
+        TreeMap<Integer, List<Integer>>
+            map = new TreeMap();
+        
+        while(!queue.isEmpty()){
+            
+            int size = queue.size();
+            
+            for(int i=0;i<size;i++){
+                
+                Tuple cur = queue.poll();
+                int row = cur.row;
+                int col = cur.col;
+                TreeNode node = cur.node;
+                
+                if(map.containsKey(col)){
+                    map.get(col).add(node.val);
+                }else{
+                    ArrayList<Integer> temp = new ArrayList();
+                    temp.add(node.val);
+                    map.put(col, temp);
+                }
+                
+                if(node.left!=null)queue.offer(new Tuple(row+1,col-1,node.left));
+                if(node.right!=null)queue.offer(new Tuple(row+1, col+1, node.right));                
+                
+            }
+
+        }
+        
+        List<List<Integer>> a  = new ArrayList();
+        
+        for(List<Integer> e : map.values()){
+            a.add(e);
+        }
+        
+        
+        return a;
+    }*/
