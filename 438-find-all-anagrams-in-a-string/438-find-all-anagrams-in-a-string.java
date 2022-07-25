@@ -22,21 +22,20 @@ class Solution {
                 if(map.get(fast)==0)count--;
             }
             
-            if(j-i+1<k)j++;
-            else{
+            if(j-i+1==k){
                 
                 if(count==0){
                     list.add(i);
                 }
                 
-                if(map.containsKey(slow)){
-                    map.put(slow,map.get(slow)+1);
+                if(map.containsKey(slow)){              // Exlcuding i (reducing windnow from start)
+                    map.put(slow,map.get(slow)+1);      // and Recalulating window
                     if(map.get(slow)==1)count++;
                 }
                 
-                i++;j++;
+                i++;
             }
-            
+            j++;   
         }
      
      return list;   
