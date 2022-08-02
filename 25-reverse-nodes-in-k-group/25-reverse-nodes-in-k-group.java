@@ -11,36 +11,62 @@
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         
-        ListNode pointer = new ListNode(0,head);
-        ListNode ans = pointer;
+        if(k==1)return head;
         
-        while(pointer!=null){
+        ListNode dum = head, ans = null;
+        int ind = --k;
+        int itr = 1;
+        
+        ListNode prev = new ListNode(-1,dum);
+        
+        while(dum!=null && dum.next!=null){
             
-            ListNode testNode = pointer.next;
+            dum = dum.next;
+            ind--;
             
-            for(int i=0;i<k-1 && testNode!=null;i++){
-                testNode = testNode.next;                
-            }
             
-            if(testNode==null)break;
-            
-            ListNode prev = pointer, cur = pointer.next, next = null;
-            
-            for(int i=0;i<k;i++){
+            if(ind==0){
                 
-                next = cur.next;
-                cur.next = prev;
-                prev = cur;
-                cur = next;
+                if(itr==1){
+                    ans = dum;
+                    itr++;
+                }
+                // System.out.println(dum.val);
+                
+                ListNode temp = dum.next!=null?dum.next:null;
+                ListNode start = prev.next;
+                ListNode point = reverseBtwnTwoNodes(start,dum);
+                
+                prev.next = point;
+                start.next = temp;
+                dum = temp;
+                prev = start;
+                ind = k;
+                
             }
-            
-            ListNode first = pointer.next;
-            first.next = cur;
-            pointer.next = prev;
-            pointer = first;
             
         }
         
-        return ans.next;
+        
+        return ans;
     }
+    
+    public ListNode reverseBtwnTwoNodes(ListNode start, ListNode end){
+        
+        ListNode first = start;
+        ListNode cur = start.next;
+        
+        while(start!=end){
+            
+            ListNode curNext = cur.next;
+            cur.next = start;
+            start = cur;
+            cur = curNext;
+        }
+        
+        first.next = start.next;
+        
+        return start;
+    }
+    
 }
