@@ -29,7 +29,7 @@ class Solution {
     public int widthOfBinaryTree(TreeNode root) {
 
         Queue<Pair> queue = new ArrayDeque();
-        queue.offer(new Pair(root,0));
+        queue.offer(new Pair(root,1));
         long ans = 0;
         
         while(!queue.isEmpty()){
@@ -37,7 +37,7 @@ class Solution {
             int size = queue.size();
             long minPos = 1;
             long maxPos = 1;
-           
+                
             for(int i=0;i<size;i++){    
                 
                 TreeNode cur = queue.peek().node;
