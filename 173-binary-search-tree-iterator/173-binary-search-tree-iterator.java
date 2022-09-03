@@ -16,12 +16,9 @@
 class BSTIterator {
     
     private Stack<TreeNode> stack;
-    TreeNode node;
     
     public BSTIterator(TreeNode root) {
         stack = new Stack();
-        node = new TreeNode(-1);
-        node.right = root;
         fillStack(root);
     }
     
