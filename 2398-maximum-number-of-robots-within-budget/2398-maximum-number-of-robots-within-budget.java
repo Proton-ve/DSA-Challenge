@@ -20,7 +20,9 @@ class Solution {
             deque.offer(j);
              totalCost = chargeTimes[deque.peek()] + (j-i+1)*sumCost;
             
-            if(totalCost > budget){
+            if(totalCost<=budget)
+                robots = Math.max(robots,j-i+1);
+            else{
                 if(deque.peek()<=i)
                     deque.pollFirst();
                 
@@ -38,8 +40,6 @@ class Solution {
 //                 totalCost = chargeTimes[deque.peek()] + (j-i+1)*sumCost;
 //             }
             
-            if(totalCost<=budget)
-                robots = Math.max(robots,j-i+1);
             
             j++;            
 
