@@ -33,57 +33,84 @@ class GFG {
 
 
 class Solution {
+    
+    
+    
     // Function to detect cycle in an undirected graph.
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         
         boolean[] visited = new boolean[V];
-        
+        // DFS
         for(int i=0;i<V;i++){
             if(!visited[i]){
-                if(checkCycle(V, adj, visited, i))return true;
+                if(checkCycleDFS(adj, i, -1, visited))return true;
             }
         }
+        return false;
+
+        // BFS
+        // boolean[] visited = new boolean[V];
         
+        // for(int i=0;i<V;i++){
+        //     if(!visited[i]){
+        //         if(checkCycle(V, adj, visited, i))return true;
+        //     }
+        // }
+        
+        // return false;
+    }
+    
+    
+    public boolean checkCycleDFS(ArrayList<ArrayList<Integer>> adj, int node, int parent, boolean[] visited){
+
+        visited[node] = true;
+
+        for(Integer e : adj.get(node)){
+            
+            if(!visited[e]){
+                if(checkCycleDFS(adj, e, node, visited))
+                    return true;
+            }else if(e!=parent)
+                return true;
+        }
         return false;
     }
     
     
-    public boolean checkCycle(int V, ArrayList<ArrayList<Integer>> adj, boolean[] visited, int start){
+    // BFS
+    // class Data{
+    //     int node, parent;
+    //     Data(int node, int parent){
+    //         this.node = node;
+    //         this.parent = parent;
+    //     }
+    // }
+    // public boolean checkCycle(int V, ArrayList<ArrayList<Integer>> adj, boolean[] visited, int start){
         
-        Queue<Data> que = new ArrayDeque<Data>();
+    //     Queue<Data> que = new ArrayDeque<Data>();
         
-        que.offer(new Data(start,-1));
-        visited[start] = true;
+    //     que.offer(new Data(start,-1));
+    //     visited[start] = true;
         
-        while(!que.isEmpty()){
+    //     while(!que.isEmpty()){
             
-            Data cur = que.poll();
-            int node = cur.node;
-            int parent = cur.parent;
+    //         Data cur = que.poll();
+    //         int node = cur.node;
+    //         int parent = cur.parent;
             
-            for(Integer e : adj.get(cur.node)){
+    //         for(Integer e : adj.get(cur.node)){
                 
-                if(!visited[e] && e!=parent){
-                    que.offer(new Data(e,node));
-                    visited[e] = true;
-                }else
-                    if(e!=parent){
-                        return true;
-                    }
-            }
-        }
+    //             if(!visited[e] && e!=parent){
+    //                 que.offer(new Data(e,node));
+    //                 visited[e] = true;
+    //             }else
+    //                 if(e!=parent){
+    //                     return true;
+    //                 }
+    //         }
+    //     }
         
-        return false;
-    }
-    
-    
-    class Data{
-        int node, parent;
-        Data(int node, int parent){
-            this.node = node;
-            this.parent = parent;
-        }
-    }
-    
+    //     return false;
+    // }
 }
