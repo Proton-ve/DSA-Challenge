@@ -33,28 +33,50 @@ class GFG{
 class Solution{
     public int minimumEnergy(int arr[],int n){
         
-        int[] dp = new int[n];
-        solve(arr, dp, n-1);
-        return dp[n-1];
+        // int[] dp = new int[n];
+        // solve(arr, dp, n-1);
+        // return dp[n-1];
+        return solveTabu(n,arr);
         
     }
     
-    public int solve(int[] arr, int[] dp, int n){
+    
+    // tabulation
+    public int solveTabu(int n, int[] arr){
         
-        if(n<=0)
-            return 0;
+        int[] dp = new int[n];
 
-        if(dp[n]!=0)
-            return dp[n];
+        for(int i=1;i<n;i++){
+            
+            int left = dp[i-1]+Math.abs(arr[i]-arr[i-1]);
+            int right = Integer.MAX_VALUE;
+            if(i>1)
+                right = dp[i-2]+Math.abs(arr[i]-arr[i-2]);
+            dp[i] = Math.min(left,right);
+            
+        }
         
-        int left = solve(arr,dp,n-1) + Math.abs(arr[n]-arr[n-1]);
-        int right = Integer.MAX_VALUE;
-        if(n>1)
-            right = solve(arr,dp,n-2) + Math.abs(arr[n]-arr[n-2]);
-        
-        dp[n] = Math.min(left,right);
-        
-        return dp[n];
+        return dp[n-1];
     }
+    
+    
+    // memoization
+    // public int solve(int[] arr, int[] dp, int n){
+        
+    //     if(n<=0)
+    //         return 0;
+
+    //     if(dp[n]!=0)
+    //         return dp[n];
+        
+    //     int left = solve(arr,dp,n-1) + Math.abs(arr[n]-arr[n-1]);
+    //     int right = Integer.MAX_VALUE;
+    //     if(n>1)
+    //         right = solve(arr,dp,n-2) + Math.abs(arr[n]-arr[n-2]);
+        
+    //     dp[n] = Math.min(left,right);
+        
+    //     return dp[n];
+    // }
     
 }
