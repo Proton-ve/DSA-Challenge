@@ -41,23 +41,45 @@ class Solution{
     }
     
     
-    // tabulation
+    // tabulation with space opti
     public int solveTabu(int n, int[] arr){
         
-        int[] dp = new int[n];
+        int prev=0, prevprev=0, cur=0;
 
         for(int i=1;i<n;i++){
             
-            int left = dp[i-1]+Math.abs(arr[i]-arr[i-1]);
+            int left = prev+Math.abs(arr[i]-arr[i-1]);
             int right = Integer.MAX_VALUE;
             if(i>1)
-                right = dp[i-2]+Math.abs(arr[i]-arr[i-2]);
-            dp[i] = Math.min(left,right);
+                right = prevprev+Math.abs(arr[i]-arr[i-2]);
+                
+            cur = Math.min(left,right);
+            prevprev = prev;
+            prev = cur;
             
         }
         
-        return dp[n-1];
+        return prev;
     }
+    
+    
+    // // tabulation
+    // public int solveTabu(int n, int[] arr){
+        
+    //     int[] dp = new int[n];
+
+    //     for(int i=1;i<n;i++){
+            
+    //         int left = dp[i-1]+Math.abs(arr[i]-arr[i-1]);
+    //         int right = Integer.MAX_VALUE;
+    //         if(i>1)
+    //             right = dp[i-2]+Math.abs(arr[i]-arr[i-2]);
+    //         dp[i] = Math.min(left,right);
+            
+    //     }
+        
+    //     return dp[n-1];
+    // }
     
     
     // memoization
